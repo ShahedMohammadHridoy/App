@@ -1,0 +1,20 @@
+String url = "http://my-json-feed";
+
+JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+    @Override
+    public void onResponse(JSONObject response) {
+        mTextView.setText("Response: " + response.toString());
+    }
+}, new Response.ErrorListener() {
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        // TODO: Handle error
+
+    }
+});
+
+// Access the RequestQueue through your singleton class.
+MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
